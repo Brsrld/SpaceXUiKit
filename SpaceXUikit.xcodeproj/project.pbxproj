@@ -13,6 +13,13 @@
 		A5520D1B27B1AC2300621BC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5520D1927B1AC2300621BC6 /* Main.storyboard */; };
 		A5520D1D27B1AC2300621BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5520D1C27B1AC2300621BC6 /* Assets.xcassets */; };
 		A5520D2027B1AC2300621BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5520D1E27B1AC2300621BC6 /* LaunchScreen.storyboard */; };
+		A5520D2B27B1AE5F00621BC6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5520D2A27B1AE5F00621BC6 /* Coordinator.swift */; };
+		A5520D2E27B1B1C400621BC6 /* SpaceXResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5520D2D27B1B1C400621BC6 /* SpaceXResponseModel.swift */; };
+		A5520D3027B1B3F500621BC6 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5520D2F27B1B3F500621BC6 /* Service.swift */; };
+		A5520D3327B1B43000621BC6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A5520D3227B1B43000621BC6 /* Alamofire */; };
+		A5520D3627B1B49400621BC6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5520D3527B1B49400621BC6 /* Constant.swift */; };
+		A5520D3827B1B4BA00621BC6 /* Constant+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5520D3727B1B4BA00621BC6 /* Constant+Network.swift */; };
+		A5520D3C27B1B54800621BC6 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5520D3B27B1B54800621BC6 /* Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,12 @@
 		A5520D1C27B1AC2300621BC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5520D1F27B1AC2300621BC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5520D2127B1AC2300621BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5520D2A27B1AE5F00621BC6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A5520D2D27B1B1C400621BC6 /* SpaceXResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXResponseModel.swift; sourceTree = "<group>"; };
+		A5520D2F27B1B3F500621BC6 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		A5520D3527B1B49400621BC6 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A5520D3727B1B4BA00621BC6 /* Constant+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Network.swift"; sourceTree = "<group>"; };
+		A5520D3B27B1B54800621BC6 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5520D3327B1B43000621BC6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +70,77 @@
 		A5520D1227B1AC2300621BC6 /* SpaceXUikit */ = {
 			isa = PBXGroup;
 			children = (
-				A5520D1327B1AC2300621BC6 /* AppDelegate.swift */,
-				A5520D1527B1AC2300621BC6 /* SceneDelegate.swift */,
-				A5520D1727B1AC2300621BC6 /* ViewController.swift */,
-				A5520D1927B1AC2300621BC6 /* Main.storyboard */,
-				A5520D1C27B1AC2300621BC6 /* Assets.xcassets */,
-				A5520D1E27B1AC2300621BC6 /* LaunchScreen.storyboard */,
+				A5520D2927B1AC6E00621BC6 /* Resources */,
+				A5520D2827B1AC4600621BC6 /* Module */,
+				A5520D2727B1AC3500621BC6 /* App */,
 				A5520D2127B1AC2300621BC6 /* Info.plist */,
 			);
 			path = SpaceXUikit;
+			sourceTree = "<group>";
+		};
+		A5520D2727B1AC3500621BC6 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D1927B1AC2300621BC6 /* Main.storyboard */,
+				A5520D1527B1AC2300621BC6 /* SceneDelegate.swift */,
+				A5520D1727B1AC2300621BC6 /* ViewController.swift */,
+				A5520D1327B1AC2300621BC6 /* AppDelegate.swift */,
+				A5520D2A27B1AE5F00621BC6 /* Coordinator.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A5520D2827B1AC4600621BC6 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D3927B1B4C800621BC6 /* Network */,
+				A5520D3427B1B48800621BC6 /* Constant */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		A5520D2927B1AC6E00621BC6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D1C27B1AC2300621BC6 /* Assets.xcassets */,
+				A5520D1E27B1AC2300621BC6 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A5520D2C27B1B10500621BC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D2D27B1B1C400621BC6 /* SpaceXResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5520D3427B1B48800621BC6 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D3527B1B49400621BC6 /* Constant.swift */,
+				A5520D3727B1B4BA00621BC6 /* Constant+Network.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		A5520D3927B1B4C800621BC6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D3A27B1B4D800621BC6 /* Service */,
+				A5520D2C27B1B10500621BC6 /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A5520D3A27B1B4D800621BC6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A5520D2F27B1B3F500621BC6 /* Service.swift */,
+				A5520D3B27B1B54800621BC6 /* Services.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +159,9 @@
 			dependencies = (
 			);
 			name = SpaceXUikit;
+			packageProductDependencies = (
+				A5520D3227B1B43000621BC6 /* Alamofire */,
+			);
 			productName = SpaceXUikit;
 			productReference = A5520D1027B1AC2300621BC6 /* SpaceXUikit.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +190,9 @@
 				Base,
 			);
 			mainGroup = A5520D0727B1AC2200621BC6;
+			packageReferences = (
+				A5520D3127B1B43000621BC6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = A5520D1127B1AC2300621BC6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +220,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5520D3827B1B4BA00621BC6 /* Constant+Network.swift in Sources */,
+				A5520D3627B1B49400621BC6 /* Constant.swift in Sources */,
+				A5520D2B27B1AE5F00621BC6 /* Coordinator.swift in Sources */,
 				A5520D1827B1AC2300621BC6 /* ViewController.swift in Sources */,
 				A5520D1427B1AC2300621BC6 /* AppDelegate.swift in Sources */,
+				A5520D2E27B1B1C400621BC6 /* SpaceXResponseModel.swift in Sources */,
 				A5520D1627B1AC2300621BC6 /* SceneDelegate.swift in Sources */,
+				A5520D3C27B1B54800621BC6 /* Services.swift in Sources */,
+				A5520D3027B1B3F500621BC6 /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +448,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A5520D3127B1B43000621BC6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5520D3227B1B43000621BC6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5520D3127B1B43000621BC6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A5520D0827B1AC2200621BC6 /* Project object */;
 }
