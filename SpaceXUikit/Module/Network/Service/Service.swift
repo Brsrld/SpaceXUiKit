@@ -16,16 +16,14 @@ final class ServiceManager {
 extension ServiceManager {
 
     func fetch<T>(
-        path: String,
         paramaters paramatres: [String : String]? = nil,
         data: Codable? = nil,
         method: HTTPMethod,
-        paginationOffset: Int,
         onSuccess: @escaping (T) -> Void,
         onError: @escaping (AFError) -> Void
     ) where T : Codable {
 
-        AF.request(generateURL(path: path, offSet: paginationOffset),
+        AF.request(generateURL(),
                    method: method,
                    encoding: JSONEncoding.default
         ).validate().responseDecodable(of: T.self) { (response) in
@@ -37,8 +35,7 @@ extension ServiceManager {
         }
     }
     
-    func generateURL(path: String, offSet: Int) -> URL {
-        let newPath = path.replacingOccurrences(of: " ", with: "+")
-        return Constant.NetworkConstant.generateURL(path: newPath, offSet: offSet)
+    func generateURL() -> URL {
+        return Constant.NetworkConstant.generateURL()
     }
 }

@@ -23,36 +23,25 @@ protocol Coordinating {
 }
 
 class AppCoordinator: Coordinator {
-    func eventOccurred(with type: Event, item: Any) {
-        
-    }
-    
-    func start() {
-        
-    }
-    
    var navigationController: UINavigationController?
 
-//    func eventOccurred(with type: Event, item: Any) {
-//        switch type {
-//        case .goToDetail:
-//            var vc: UIViewController & Coordinating = ItemDetailViewController(resultDetail: item as? Result)
-//            vc.coordinator = self
-//            navigationController?.pushViewController(vc, animated: true)
-//        }
-//    }
+    func eventOccurred(with type: Event, item: Any) {
+        switch type {
+        case .goToDetail:
+            var vc: UIViewController & Coordinating = LaunchDetailViewController(resultDetail: item as? SpaceXResponseModel)
+            vc.coordinator = self
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 
-//    func start() {
-//        let service: IService = Services()
-//        let viewModel = ItemSearchViewModel(
-//            service: service,
-//            coordinator: self
-//        )
-//        let searchTableViewProvider = SearchResultCollectionViewProvider()
-//        let vc: UIViewController = ItemSearchViewController(
-//            viewModel: viewModel,
-//            searchResultCollectionViewDelegate: searchTableViewProvider
-//        )
-//        navigationController?.setViewControllers([vc], animated: false)
-//    }
+    func start() {
+        let service: IService = Services()
+        let viewModel = AllLaunchesViewModel(
+            service: service,
+            coordinator: self
+        )
+        let allLaunchesCollectionViewViewDelegate = AllLaunchesCollectionViewProvider()
+        let vc: UIViewController = AllLaunchesViewController(service: service, viewModel: viewModel, allLaunchesCollectionViewViewDelegate: allLaunchesCollectionViewViewDelegate)
+        navigationController?.setViewControllers([vc], animated: false)
+    }
 }
