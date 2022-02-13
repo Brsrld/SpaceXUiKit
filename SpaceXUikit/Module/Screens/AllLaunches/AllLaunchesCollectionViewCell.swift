@@ -11,41 +11,25 @@ import SnapKit
 
 class AllLaunchesCollectionViewCell: UICollectionViewCell {
     
-    private lazy var parentStack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fill
-        stack.alignment = .fill
-        stack.spacing = 8
-        stack.axis = .vertical
-        return stack
-    }()
-    
     private lazy var rocketImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     private lazy var titleLabel: UILabel = {
-       let label = UILabel()
-       label.translatesAutoresizingMaskIntoConstraints = false
-       label.clipsToBounds = true
-       label.textColor = .black
-       label.numberOfLines = 0
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
-       return label
-   }()
-    
-    private lazy var dateLabel: UILabel = {
-       let label = UILabel()
-       label.translatesAutoresizingMaskIntoConstraints = false
-       label.clipsToBounds = true
-       label.textColor = .black
-       label.numberOfLines = 0
-       return label
-   }()
+        label.textAlignment = .center
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,26 +41,28 @@ class AllLaunchesCollectionViewCell: UICollectionViewCell {
     }
     
     func setUpView() {
-        contentView.addSubview(parentStack)
+        contentView.addSubview(rocketImage)
+        contentView.addSubview(titleLabel)
+        contentView.backgroundColor = .yellow
+        contentView.layer.cornerRadius = 12
+        
+        NSLayoutConstraint.activate([
+            rocketImage.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor),
+            rocketImage.rightAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.rightAnchor),
+            rocketImage.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            rocketImage.heightAnchor.constraint(equalToConstant: contentView.frame.height / 1.25),
 
-        parentStack.snp.makeConstraints { make in
-            make.top.bottom.equalTo(contentView).inset(8)
-            make.leading.trailing.equalTo(contentView).inset(8)
-        }
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor,constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,constant: -10),
+            titleLabel.topAnchor.constraint(equalTo: rocketImage.bottomAnchor, constant: 10),
 
-        rocketImage.snp.makeConstraints { make in
-            make.height.equalTo(rocketImage.snp.width).multipliedBy(1/1)
-        }
-        parentStack.addArrangedSubview(rocketImage)
-        parentStack.addArrangedSubview(dateLabel)
-        parentStack.addArrangedSubview(titleLabel)
+        ])
     }
     
     func setUpContent(item: SpaceXResponseModel) {
         if let path = item.links?.patch?.small {
             rocketImage.kf.setImage( with: URL(string: path)!)
         }
-        dateLabel.text = item.dateUTC
-        titleLabel.text = item.rocket
+        titleLabel.text = item.name
     }
 }

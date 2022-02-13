@@ -12,6 +12,7 @@ import UIKit
 protocol AllLaunchesViewModelProtocol {
     func goToDetailPage(itemDetail: SpaceXResponseModel)
     func setUpOutPutDelegate(_ viewController: AllLaunchesViewController)
+    func fetchData()
 }
 
 protocol AllLaunchesViewModelOutput {

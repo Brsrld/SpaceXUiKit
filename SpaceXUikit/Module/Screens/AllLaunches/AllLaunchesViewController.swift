@@ -43,19 +43,13 @@ class AllLaunchesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        service.fetchLaunches { model in
-            print(model)
-        } onError: { error in
-            print(error)
-        }
-
-        
         view.backgroundColor = .white
         view.addSubview(allLaunchesCollectionView)
         setUpContraint()
         initDelegate()
+        viewModel.fetchData()
         
-        // Do any additional setup after loading the view.
+        title = "Launches"
     }
     
     private func initDelegate() {
@@ -66,11 +60,12 @@ class AllLaunchesViewController: UIViewController {
     }
     
     private func setUpContraint() {
-        allLaunchesCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(view.snp.height)
-            make.width.equalTo(view.snp.width)
-        }
+        NSLayoutConstraint.activate([
+            allLaunchesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            allLaunchesCollectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10),
+            allLaunchesCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            allLaunchesCollectionView.heightAnchor.constraint(equalToConstant: view.frame.height / 1.1)
+        ])
     }
 }
 
@@ -86,7 +81,7 @@ extension AllLaunchesViewController: AllLaunchesCollectionViewDelegate {
     }
 }
 
-// MARK: - AllLaunchesCollectionViewOutput
+// MARK: - AllLaunchesViewModelOutput
 
 extension AllLaunchesViewController: AllLaunchesViewModelOutput {
     func showData(launchs: [SpaceXResponseModel]) {
