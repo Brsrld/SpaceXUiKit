@@ -139,6 +139,7 @@
 		A5520D2827B1AC4600621BC6 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				A526795027B9426100EDFD3E /* Extensions */,
 				A526793B27B9306700EDFD3E /* Screens */,
 				A5520D3927B1B4C800621BC6 /* Network */,
 				A5520D3427B1B48800621BC6 /* Constant */,
@@ -149,7 +150,6 @@
 		A5520D2927B1AC6E00621BC6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A526795027B9426100EDFD3E /* Extensions */,
 				A5520D1C27B1AC2300621BC6 /* Assets.xcassets */,
 				A5520D1E27B1AC2300621BC6 /* LaunchScreen.storyboard */,
 			);

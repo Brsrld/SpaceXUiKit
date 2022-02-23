@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class AllLaunchesCollectionViewProvider: NSObject {
-    private var searchResult: [SpaceXResponseModel] = []
+    private var launchResult: [SpaceXResponseModel] = []
     var cellID: String = ""
     weak var delegate: AllLaunchesCollectionViewDelegate?
     var parentCollectionView: UICollectionView?
@@ -25,11 +25,11 @@ extension AllLaunchesCollectionViewProvider {
     // MARK: - public func
     
     func appendItem(item: [SpaceXResponseModel]) {
-        self.searchResult.append(contentsOf: item)
+        self.launchResult.append(contentsOf: item)
     }
 
     func clearData() {
-        self.searchResult.removeAll()
+        self.launchResult.removeAll()
     }
 }
 
@@ -37,7 +37,7 @@ extension AllLaunchesCollectionViewProvider {
 extension AllLaunchesCollectionViewProvider: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIScrollViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        searchResult.count
+        launchResult.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -45,7 +45,7 @@ extension AllLaunchesCollectionViewProvider: UICollectionViewDelegate, UICollect
             withReuseIdentifier: cellID,
             for: indexPath
         ) as? AllLaunchesCollectionViewCell else { return UICollectionViewCell() }
-        cell.setUpContent(item: (searchResult[indexPath.row]))
+        cell.setUpContent(item: (launchResult[indexPath.row]))
         return cell
     }
 
@@ -62,6 +62,6 @@ extension AllLaunchesCollectionViewProvider: UICollectionViewDelegate, UICollect
 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.selectItem(item: searchResult[indexPath.row])
+        delegate?.selectItem(item: launchResult[indexPath.row])
     }
 }

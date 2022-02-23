@@ -28,6 +28,7 @@ class AllLaunchesViewController: UIViewController {
     private var allLaunchesCollectionViewViewDelegate: AllLaunchesCollectionViewProvider
     private var viewModel: AllLaunchesViewModelProtocol
     private var service: IService
+    
     init(service: IService,viewModel: AllLaunchesViewModelProtocol,
          allLaunchesCollectionViewViewDelegate: AllLaunchesCollectionViewProvider) {
         self.allLaunchesCollectionViewViewDelegate = allLaunchesCollectionViewViewDelegate

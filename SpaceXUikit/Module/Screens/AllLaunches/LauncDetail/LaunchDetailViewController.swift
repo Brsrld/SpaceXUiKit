@@ -8,23 +8,20 @@
 import UIKit
 import SnapKit
 
-class LaunchDetailViewController: UIViewController, Coordinating {
+class LaunchDetailViewController: UIViewController, Coordinating, UIScrollViewDelegate {
     
-    private lazy var parentStack: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.distribution = .fill
-        stack.alignment = .fill
-        stack.spacing = 12
-        stack.axis = .horizontal
-        return stack
-    }()
+    
+    private let scrollView: UIScrollView = {
+            let scroll = UIScrollView()
+            scroll.translatesAutoresizingMaskIntoConstraints = false
+            scroll.backgroundColor = .blue
+            return scroll
+        }()
     
     private lazy var rocketImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
-        image.backgroundColor = .yellow
         return image
     }()
     
@@ -91,8 +88,9 @@ class LaunchDetailViewController: UIViewController, Coordinating {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.clipsToBounds = true
+        label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .black
-        label.numberOfLines = 0
+        label.numberOfLines = 24
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         label.textAlignment = .justified
@@ -113,24 +111,17 @@ class LaunchDetailViewController: UIViewController, Coordinating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(rocketImage)
-        view.addSubview(titleLabel)
-        //view.addSubview(wikiImage)
-        view.addSubview(youtubeImage)
-        view.addSubview(overviewLabel)
-        
-//        parentStack.addSubview(wikiImage)
-//        parentStack.addSubview(articleImage)
-//        parentStack.addSubview(youtubeImage)
-       
-        titleLabel.backgroundColor = .red
-        overviewLabel.backgroundColor = .green
         setUpContent(item: resultDetail)
         setUpContraint()
     }
     
+    
     private func setUpContraint() {
+        view.backgroundColor = .white
+        view.addSubview(rocketImage)
+        view.addSubview(titleLabel)
+        view.addSubview(overviewLabel)
+                        
         NSLayoutConstraint.activate([
             rocketImage.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 10),
             rocketImage.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10),
@@ -139,21 +130,13 @@ class LaunchDetailViewController: UIViewController, Coordinating {
         
             titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10),
-            titleLabel.topAnchor.constraint(equalTo: rocketImage.bottomAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: rocketImage.bottomAnchor, constant: 25),
             titleLabel.heightAnchor.constraint(equalToConstant: view.frame.height / 40),
-            
-//            wikiImage.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 10),
-//            wikiImage.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10),
-//            wikiImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-//            wikiImage.heightAnchor.constraint(equalToConstant: view.frame.height / 40),
-            
-            youtubeImage.widthAnchor.constraint(equalTo: view.widthAnchor, constant: view.frame.width / 10),
-            youtubeImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            youtubeImage.heightAnchor.constraint(equalToConstant: view.frame.height / 40),
             
             overviewLabel.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 10),
             overviewLabel.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -10),
-            overviewLabel.topAnchor.constraint(equalTo: youtubeImage.bottomAnchor, constant: 20),
+            overviewLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor,constant: 25),
+        
         ])
     }
     
